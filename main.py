@@ -1,6 +1,3 @@
-from cProfile import label
-from email.errors import MessageDefect
-from posixpath import split
 import requests
 import json 
 import numpy as np
@@ -46,4 +43,5 @@ def getLaps(driverId):
 
 
 if __name__ == '__main__':
+
     compareLapTimes('alonso', 'ocon')
