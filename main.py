@@ -43,5 +43,4 @@ def getLaps(driverId):
 
 
 if __name__ == '__main__':
-
-    compareLapTimes('alonso', 'ocon')
+    compareLapTimes('alonso', 'hamilton')
