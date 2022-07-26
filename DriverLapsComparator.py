@@ -3,25 +3,37 @@ import json
 import numpy as np
 import matplotlib.pyplot as plt
 
-def compareLapTimes(driverId1, driverId2):
-    dr1LapTimes = normalizeLapTime(getDriverLapTimes(driverId1))
-    dr2LapTimes = normalizeLapTime(getDriverLapTimes(driverId2))
+def compareLapTimesNormalized(driverId1, driverId2):
+    dr1LapTimes, laps1 = normalizeLapTime(getDriverLapTimes(driverId1))
+    dr2LapTimes, laps2 = normalizeLapTime(getDriverLapTimes(driverId2))
 
     plt.title(f'{driverId1} vs {driverId2}')
-    plt.plot(np.arange(0, len(dr1LapTimes), 1), dr1LapTimes, label=driverId1)
-    plt.plot(np.arange(0, len(dr2LapTimes), 1), dr2LapTimes, label=driverId2)
-    plt.legend()
+    plt.xlabel('Laps')
+    plt.ylabel('Lap Time (sec)')
+    
+    plt.plot(laps1, dr1LapTimes, label=driverId1)
+    plt.plot(laps2, dr2LapTimes, label=driverId2)
 
-    plt.savefig('./images/my_plot.png', dpi=300)
+    plt.legend()
+    plt.savefig('./images/lap_times_normalized.png', dpi=300)
+    plt.close()
 
 def normalizeLapTime(arr):
-    return list(map(strTomsec, arr))
+    lapTimes = list(map(strToSec, arr))
+    lapTimesNormalized = []
+    laps = []
+    avgLapTime = np.average(np.array(lapTimes))
+    for i in range(0, len(lapTimes)):
+        if lapTimes[i] < avgLapTime * 1.075:
+            lapTimesNormalized.append(lapTimes[i])
+            laps.append(i)
+    return lapTimesNormalized[1:], laps[1:]
     
-def strTomsec(s):
-    min = int(s.split(":")[0])
-    sec = int(s.split(":")[1].split(".")[0])
+def strToSec(s):
+    mins = int(s.split(":")[0])
+    secs = int(s.split(":")[1].split(".")[0])
     msec = int(s.split(":")[1].split(".")[1])
-    return min * 60 * 1000 + sec *  1000 + msec
+    return mins * 60 + secs + msec / 1000
 
 def getDriverLapTimes(driverId):
     limit = 30
@@ -43,4 +55,4 @@ def getLaps(driverId):
 
 
 if __name__ == '__main__':
-    compareLapTimes('alonso', 'hamilton')
+    compareLapTimesNormalized('alonso', 'hamilton')
