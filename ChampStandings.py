@@ -14,5 +14,5 @@ def getConstructorStandings():
     return response["MRData"]["StandingsTable"]["StandingsLists"][0]["ConstructorStandings"]
 
 if __name__ == '__main__':
-
     print(json.dumps(getConstructorStandings(), indent=2))
+    print(json.dumps(getDriversStandings(), indent=2))
