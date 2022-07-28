@@ -36,8 +36,27 @@ def makeConstStandImg(standings):
         offset += 171
 
     img.show()
+    img.close()
+
+def makeDriverStandImg(standings):
+    img = Image.open('./templates/driverStandings.jpg')
+    drawer = ImageDraw.Draw(img)
+    fontNames = ImageFont.truetype('./fonts/Roboto_Slab/static/RobotoSlab-Medium.ttf', 42)
+    fontPoints = ImageFont.truetype('./fonts/Roboto_Slab/static/RobotoSlab-Regular.ttf', 48)
+    offset = 0
+    x = 305
+    for i in standings[:20]:
+        drawer.text((x, 375 + offset), i[2], font=fontNames)
+        drawer.text((x + 378, 375 + offset), "{:3d}".format(int(i[1])), font=fontPoints)
+        offset += 171
+        if i[0] == "10":
+            offset = 0
+            x = 1000
+
+    img.show()
+    img.close()
 
 
 if __name__ == '__main__':
     makeConstStandImg(getConstructorStandings())
-    # print(getDriversStandings())
+    makeDriverStandImg(getDriversStandings())
