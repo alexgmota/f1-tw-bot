@@ -1,0 +1,19 @@
+axes.facecolor:     000623   # axes background color
+axes.edgecolor:     c1246f   # axes edge color
+axes.linewidth:     1     # edge line width
+axes.grid:          True    # display grid or not
+axes.grid.axis:     both    # which axis the grid should apply to
+axes.grid.which:    both   # grid lines at {major, minor, both} ticks
+axes.labelcolor:    white
+
+grid.color:     004363  # grid color
+grid.linestyle: --       # solid
+grid.linewidth: 0.8     # in points
+grid.alpha:     1.0     # transparency, between 0.0 and 1.0
+
+figure.facecolor:   00061e
+
+xtick.color:         white
+ytick.color:         white
+
+text.color: white

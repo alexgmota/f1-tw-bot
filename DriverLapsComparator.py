@@ -7,12 +7,14 @@ def compareLapTimesNormalized(driverId1, driverId2):
     dr1LapTimes, laps1 = normalizeLapTime(getDriverLapTimes(driverId1))
     dr2LapTimes, laps2 = normalizeLapTime(getDriverLapTimes(driverId2))
 
+    plt.style.use('./templates/mystyle.mplstyle')
+    plt.figure(figsize=[10, 5])
     plt.title(f'{driverId1} vs {driverId2}')
     plt.xlabel('Laps')
     plt.ylabel('Lap Time (sec)')
     
-    plt.plot(laps1, dr1LapTimes, label=driverId1)
-    plt.plot(laps2, dr2LapTimes, label=driverId2)
+    plt.plot(laps1, dr1LapTimes, label=driverId1, color='#e600f7')
+    plt.plot(laps2, dr2LapTimes, label=driverId2, color='#00eaf7')
 
     plt.legend()
     plt.savefig('./images/lap_times_normalized.png', dpi=300)
