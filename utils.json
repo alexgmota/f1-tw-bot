@@ -1,0 +1,142 @@
+{
+    "max_verstappen": {
+        "givenName": "Max",
+        "familyName": "Verstappen",
+        "teamColor": "#3671C6",
+        "color": "#4135c6",
+        "code": "VER"
+    },
+    "perez": {
+        "givenName": "Sergio",
+        "familyName": "Pérez",
+        "teamColor": "#3671C6",
+        "color": "#3572c6",
+        "code": "PER"
+    },
+    "sainz": {
+        "givenName": "Carlos",
+        "familyName": "Sainz",
+        "teamColor": "#f91536",
+        "color": "#f91336",
+        "code": "SAI"
+    },
+    "leclerc": {
+        "givenName": "Charles",
+        "familyName": "Leclerc",
+        "teamColor": "#f91536",
+        "color": "#f96413",
+        "code": "LEC"
+    },
+    "alonso": {
+        "givenName": "Fernando",
+        "familyName": "Alonso",
+        "teamColor": "#2293D1",
+        "color": "#2193d1",
+        "code": "ALO"
+    },
+    "ocon": {
+        "givenName": "Esteban",
+        "familyName": "Ocon",
+        "teamColor": "#2293D1",
+        "color": "#213bd1",
+        "code": "OCO"
+    },
+    "norris": {
+        "givenName": "Lando",
+        "familyName": "Norris",
+        "teamColor": "#F58020",
+        "color": "#f47f1f",
+        "code": "NOR"
+    },
+    "ricciardo": {
+        "givenName": "Daniel",
+        "familyName": "Ricciardo",
+        "teamColor": "#F58020",
+        "color": "#f4ea1f",
+        "code": "RIC"
+    },
+    "hamilton": {
+        "givenName": "Lewis",
+        "familyName": "Hamilton",
+        "teamColor": "#6CD3BF",
+        "color": "#6bd3be",
+        "code": "HAM"
+    },
+    "russell": {
+        "givenName": "George",
+        "familyName": "Russell",
+        "teamColor": "#6CD3BF",
+        "color": "#6bd38b",
+        "code": "RUS"
+    },
+    "stroll": {
+        "givenName": "Lance",
+        "familyName": "Stroll",
+        "teamColor": "#358C75",
+        "color": "#358c49",
+        "code": "STR"
+    },
+    "vettel": {
+        "givenName": "Sebastian",
+        "familyName": "Vettel",
+        "teamColor": "#358C75",
+        "color": "#358c75",
+        "code": "VET"
+    },
+    "gasly": {
+        "givenName": "Pierre",
+        "familyName": "Gasly",
+        "teamColor": "#5E8FAA",
+        "color": "#5d8faa",
+        "code": "GAS"
+    },
+    "tsunoda": {
+        "givenName": "Yuki",
+        "familyName": "Tsunoda",
+        "teamColor": "#5E8FAA",
+        "color": "#5d69aa",
+        "code": "TSU"
+    },
+    "albon": {
+        "givenName": "Alexander",
+        "familyName": "Albon",
+        "teamColor": "#37BEDD",
+        "color": "#37bfdd",
+        "code": "ALB"
+    },
+    "latifi": {
+        "givenName": "Nicholas",
+        "familyName": "Latifi",
+        "teamColor": "#37BEDD",
+        "color": "#376cdd",
+        "code": "LAT"
+    },
+    "bottas": {
+        "givenName": "Valtteri",
+        "familyName": "Bottas",
+        "teamColor": "#C92D4B",
+        "color": "#c92c4b",
+        "code": "BOT"
+    },
+    "zhou": {
+        "givenName": "Guanyu",
+        "familyName": "Zhou",
+        "teamColor": "#C92D4B",
+        "color": "#c95b2c",
+        "code": "ZHO"
+    },
+    "mick_schumacher": {
+        "givenName": "Mick",
+        "familyName": "Schumacher",
+        "teamColor": "#B6BABD",
+        "color": "#b5b9bc",
+        "code": "MSC"
+    },
+    "kevin_magnussen": {
+        "givenName": "Kevin",
+        "familyName": "Magnussen",
+        "teamColor": "#B6BABD",
+        "color": "#f9fbfc",
+        "code": "MAG"
+    }
+}

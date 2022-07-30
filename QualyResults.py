@@ -1,8 +1,8 @@
-from locale import normalize
 import requests
 import json 
 import numpy as np
 import matplotlib.pyplot as plt
+from DriverInfo import getDriversCode, getDriversTeamColor
 
 from DriverLapsComparator import strToSec
 
@@ -11,7 +11,7 @@ def getQualyLapTimes():
     response = json.loads(res.text)
     lapTimes = []
     for i in response["MRData"]["RaceTable"]["Races"][0]['QualifyingResults']:
-        lapTimes.append((i['Driver']['code'], getHigherQualyTime(i)))
+        lapTimes.append((i['Driver']['driverId'], getHigherQualyTime(i)))
     lapTimes.sort(key=comparator)
     return lapTimes
 
@@ -42,15 +42,16 @@ def getQ1Time(qualyResult):
 
 def makeQualyGraph():
     times = getQualyLapTimes()
-    drivers = list(map(getDrivers, times))
+    driversId = list(map(getDrivers, times))
     normalizedTimes = normalizeQualyTimes(list(map(getTimes, times)))
-
+    drivers = getDriversCode(driversId)
+    colors = getDriversTeamColor(driversId)
     plt.style.use('./templates/mystyle.mplstyle')
     plt.figure(figsize=[10, 5])
     plt.title(f'Qualy Reslts')
     plt.xlabel('Leader gap in %')
     
-    plt.barh(drivers[::-1], normalizedTimes[::-1])
+    plt.barh(drivers[::-1], normalizedTimes[::-1], color=colors[::-1])
 
     plt.savefig('./images/qualyTimes.png', dpi=300)
     plt.close()

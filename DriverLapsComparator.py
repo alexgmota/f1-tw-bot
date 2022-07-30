@@ -1,7 +1,10 @@
+from pyparsing import line
 import requests
 import json 
 import numpy as np
 import matplotlib.pyplot as plt
+
+from DriverInfo import getDriverColor
 
 def compareLapTimesNormalized(driverId1, driverId2):
     dr1LapTimes, laps1 = normalizeLapTime(getDriverLapTimes(driverId1))
@@ -13,8 +16,8 @@ def compareLapTimesNormalized(driverId1, driverId2):
     plt.xlabel('Laps')
     plt.ylabel('Lap Time (sec)')
     
-    plt.plot(laps1, dr1LapTimes, label=driverId1, color='#e600f7')
-    plt.plot(laps2, dr2LapTimes, label=driverId2, color='#00eaf7')
+    plt.plot(laps1, dr1LapTimes, label=driverId1, color=getDriverColor(driverId1))
+    plt.plot(laps2, dr2LapTimes, label=driverId2, linestyle='dashed', color=getDriverColor(driverId2))
 
     plt.legend()
     plt.savefig('./images/lap_times_normalized.png', dpi=300)
