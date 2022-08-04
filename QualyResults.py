@@ -48,7 +48,7 @@ def makeQualyGraph():
     colors = getDriversTeamColor(driversId)
     plt.style.use('./templates/mystyle.mplstyle')
     plt.figure(figsize=[10, 5])
-    plt.title(f'Qualy Reslts')
+    plt.title(f'Qualy Results')
     plt.xlabel('Leader gap in %')
     
     plt.barh(drivers[::-1], normalizedTimes[::-1], color=colors[::-1])
