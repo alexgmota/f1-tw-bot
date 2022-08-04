@@ -3,3 +3,7 @@ tempCodeRunnerFile.py
 images/
 
 __pycache__/
+
+credentials.json
+
+.vscode/
