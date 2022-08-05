@@ -40,7 +40,7 @@ def makeScheduleImg(data):
     img = Image.open('./templates/scheduleTemplate.jpg')
     drawer = ImageDraw.Draw(img)
     fontBold = ImageFont.truetype('./fonts/Roboto_Slab/static/RobotoSlab-Bold.ttf', 72)
-    fontMediumBig = ImageFont.truetype('./fonts/Roboto_Slab/static/RobotoSlab-Medium.ttf', 64)
+    fontMediumBig = ImageFont.truetype('./fonts/Roboto_Slab/static/RobotoSlab-Medium.ttf', 60)
     fontMediumSmall = ImageFont.truetype('./fonts/Roboto_Slab/static/RobotoSlab-Medium.ttf', 38)
     fontSemiBoldBig = ImageFont.truetype('./fonts/Roboto_Slab/static/RobotoSlab-SemiBold.ttf', 55)
     fontSemiBoldSmall = ImageFont.truetype('./fonts/Roboto_Slab/static/RobotoSlab-SemiBold.ttf', 45)
@@ -70,13 +70,12 @@ def makeScheduleImg(data):
     img.save('./images/schedule.png')
     print("Schedule image saved (schedule.png)")
 
+def makeScheduleTweet():
+    data = getRaceSchedule()
+    makeScheduleImg(data)
+    return f"🚨 {data['raceName']} Schedule 🚨\n*Hora española 🇪🇦", './images/schedule.png'
+
+
 
 if __name__ == '__main__':
-    data = getRaceSchedule()
-    print(data['raceName'])
-    print(getFP1Date(data))
-    print(getFP2Date(data))
-    print(getFP3Date(data))
-    print(getQualiDate(data))
-    print(getRaceDate(data))
-    makeScheduleImg(data)
+    makeScheduleTweet()
