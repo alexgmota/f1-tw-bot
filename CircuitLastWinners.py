@@ -1,4 +1,3 @@
-from textwrap import indent
 import requests
 import json
 
@@ -17,10 +16,19 @@ def getLastCircuitWinners(circuitId):
 
     return races[-5:]
 
-def getNextCircuitId():
+def getNextCircuit():
     res = requests.get(f'https://ergast.com/api/f1/current/next.json')
     response = json.loads(res.text)
-    return response['MRData']['RaceTable']['Races'][0]['Circuit']['circuitId']
+    return response['MRData']['RaceTable']['Races'][0]['Circuit']
+
+def makeLastWinnersMsg():
+    circuit = getNextCircuit()
+    res = f"Last {circuit['circuitName']} Winners:\n\n"
+    lastWinners = getLastCircuitWinners(circuit['circuitId'])
+    for i in lastWinners[::-1]:
+        res += f"\t{i[0]} - {i[1]}\n"
+    print(res)
+    return res
 
 if __name__ == '__main__':
-    print(getLastCircuitWinners(getNextCircuitId()))
+    makeLastWinnersMsg()

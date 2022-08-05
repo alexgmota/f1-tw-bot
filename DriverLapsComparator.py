@@ -4,7 +4,7 @@ import json
 import numpy as np
 import matplotlib.pyplot as plt
 
-from DriverInfo import getDriverColor
+from DriverInfo import getDriverColor, getDriverFamilyName
 
 def compareLapTimesNormalized(driverId1, driverId2):
     dr1LapTimes, laps1 = normalizeLapTime(getDriverLapTimes(driverId1))
@@ -12,16 +12,17 @@ def compareLapTimesNormalized(driverId1, driverId2):
 
     plt.style.use('./templates/mystyle.mplstyle')
     plt.figure(figsize=[10, 5])
-    plt.title(f'{driverId1} vs {driverId2}')
+    plt.title(f'{getDriverFamilyName(driverId1)} vs {getDriverFamilyName(driverId2)}')
     plt.xlabel('Laps')
     plt.ylabel('Lap Time (sec)')
     
-    plt.plot(laps1, dr1LapTimes, label=driverId1, color=getDriverColor(driverId1))
-    plt.plot(laps2, dr2LapTimes, label=driverId2, linestyle='dashed', color=getDriverColor(driverId2))
+    plt.plot(laps1, dr1LapTimes, label=getDriverFamilyName(driverId1), color=getDriverColor(driverId1))
+    plt.plot(laps2, dr2LapTimes, label=getDriverFamilyName(driverId2), linestyle='dashed', color=getDriverColor(driverId2))
 
     plt.legend()
     plt.savefig('./images/lap_times_normalized.png', dpi=300)
     plt.close()
+    print('Lap time figure saved (lap_times_normalized.png)')
 
 def normalizeLapTime(arr):
     lapTimes = list(map(strToSec, arr))
@@ -60,4 +61,4 @@ def getLaps(driverId):
 
 
 if __name__ == '__main__':
-    compareLapTimesNormalized('alonso', 'hamilton')
+    compareLapTimesNormalized('alonso', 'ocon')

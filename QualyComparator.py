@@ -1,6 +1,8 @@
 import requests
 import json
 
+from DriverInfo import getDriverCode
+
 def getQualyPositions(driverId):
     res = requests.get(f'https://ergast.com/api/f1/current/drivers/{driverId}/qualifying.json')
     response = json.loads(res.text)
@@ -20,17 +22,30 @@ def compareQualiPositions(driverId1, driverId2):
         else:
             count1 += 1
     
-    return ((driverId1, count1), (driverId2, count2))
+    return ((getDriverCode(driverId1), count1), (getDriverCode(driverId2), count2))
+
+def makeQualyComparationMsg():
+    res = "Comparación de compañeros en clasificación: \n\n"
+    for i in getTeamMates():
+        aux = compareQualiPositions(i[0], i[1])
+        res += f"\t{aux[0][0]} {aux[0][1]} - {aux[1][1]} {aux[1][0]}\n"
+    print(res)
+    return res
+
+def getTeamMates():
+    return [
+        ('leclerc', 'sainz'),
+        ('max_verstappen', 'perez'),
+        ('hamilton', 'russell'),
+        ('alonso', 'ocon'),
+        ('norris', 'ricciardo'),
+        ('bottas', 'zhou'),
+        ('gasly', 'tsunoda'),
+        ('mick_schumacher', 'kevin_magnussen'),
+        ('vettel', 'stroll'),
+        ('albon', 'latifi')
+    ]
 
 if __name__ == '__main__':
-    print(compareQualiPositions('leclerc', 'sainz'))
-    print(compareQualiPositions('max_verstappen', 'perez'))
-    print(compareQualiPositions('hamilton', 'russell'))
-    print(compareQualiPositions('alonso', 'ocon'))
-    print(compareQualiPositions('norris', 'ricciardo'))
-    print(compareQualiPositions('gasly', 'tsunoda'))
-    print(compareQualiPositions('albon', 'latifi'))
-    print(compareQualiPositions('mick_schumacher', 'kevin_magnussen'))
-    print(compareQualiPositions('vettel', 'stroll'))
-    print(compareQualiPositions('bottas', 'zhou'))
+    makeQualyComparationMsg()
     

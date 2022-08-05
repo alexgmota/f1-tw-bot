@@ -10,7 +10,7 @@ def getDriversStandings():
     response = json.loads(res.text)
     standings = []
     for i in response["MRData"]["StandingsTable"]["StandingsLists"][0]["DriverStandings"]:
-        standings.append((i['position'], i['points'], i['Driver']['givenName'] + " " + i['Driver']['familyName']))
+        standings.append((i['position'], i['points'], i['Driver']['givenName'][0] + ". " + i['Driver']['familyName']))
     return standings
 
 
@@ -35,13 +35,14 @@ def makeConstStandImg(standings):
         drawer.text((1260, 353 + offset), "{:3d}".format(int(i[1])), font=fontPoints)
         offset += 171
 
-    img.show()
+    img.save('./images/ConstructorStandings.png')
     img.close()
+    print('Constructor Standings image saved (ConstructorStandings.png)')
 
 def makeDriverStandImg(standings):
     img = Image.open('./templates/driverStandings.jpg')
     drawer = ImageDraw.Draw(img)
-    fontNames = ImageFont.truetype('./fonts/Roboto_Slab/static/RobotoSlab-Medium.ttf', 42)
+    fontNames = ImageFont.truetype('./fonts/Roboto_Slab/static/RobotoSlab-Medium.ttf', 48)
     fontPoints = ImageFont.truetype('./fonts/Roboto_Slab/static/RobotoSlab-Regular.ttf', 48)
     offset = 0
     x = 305
@@ -53,8 +54,10 @@ def makeDriverStandImg(standings):
             offset = 0
             x = 1000
 
-    img.show()
+    img.save('./images/DriverStandings.png')
     img.close()
+    print('Drivers Standings image saved (DriverStandings.png)')
+
 
 
 if __name__ == '__main__':

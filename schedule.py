@@ -67,7 +67,8 @@ def makeScheduleImg(data):
     drawer.text((470, 780), 'Race', font=fontSemiBoldBig)
     drawer.text((420, 860), getRaceDate(data).strftime('%a %d - %H:%M'), font=fontMediumSmall)
 
-    img.show()
+    img.save('./images/schedule.png')
+    print("Schedule image saved (schedule.png)")
 
 
 if __name__ == '__main__':

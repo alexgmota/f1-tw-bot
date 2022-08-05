@@ -55,6 +55,7 @@ def makeQualyGraph():
 
     plt.savefig('./images/qualyTimes.png', dpi=300)
     plt.close()
+    print('Figure qualy saved (qualyTimes.png)')
 
 
 def getDrivers(i):

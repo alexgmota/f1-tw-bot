@@ -11,6 +11,10 @@ def getDriversCode(arr):
         res.append(data[driver]['code'])
     return res
 
+def getDriverCode(driverId):
+    data = getData()
+    return data[driverId]['code']
+
 def getDriversTeamColor(arr):
     data = getData()
     res = []
@@ -21,3 +25,7 @@ def getDriversTeamColor(arr):
 def getDriverColor(driverId):
     data = getData()
     return data[driverId]['color']
+
+def getDriverFamilyName(driverId):
+    data = getData()
+    return data[driverId]['familyName']
