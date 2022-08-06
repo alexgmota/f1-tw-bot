@@ -73,7 +73,7 @@ def makeScheduleImg(data):
 def makeScheduleTweet():
     data = getRaceSchedule()
     makeScheduleImg(data)
-    return f"🚨 {data['raceName']} Schedule 🚨\n*Hora española 🇪🇦", './images/schedule.png'
+    return f"🚨 {data['raceName']} Schedule 🚨\n\n *Hora española 🇪🇦", './images/schedule.png'
 
 
 
