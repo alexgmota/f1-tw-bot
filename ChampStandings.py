@@ -34,18 +34,18 @@ def makeConstStandImg(standings):
         drawer.text((380, 353 + offset), i[2], font=fontNames)
         drawer.text((1260, 353 + offset), "{:3d}".format(int(i[1])), font=fontPoints)
         offset += 171
-
-    img.save('./images/ConstructorStandings.png')
+    path = './images/ConstructorStandings.png'
+    img.save(path)
     img.close()
     print('Constructor Standings image saved (ConstructorStandings.png)')
+    return path
 
 def makeDriverStandImg(standings):
     img = Image.open('./templates/driverStandings.jpg')
     drawer = ImageDraw.Draw(img)
     fontNames = ImageFont.truetype('./fonts/Roboto_Slab/static/RobotoSlab-Medium.ttf', 48)
     fontPoints = ImageFont.truetype('./fonts/Roboto_Slab/static/RobotoSlab-Regular.ttf', 48)
-    offset = 0
-    x = 305
+    offset = 0; x = 305
     for i in standings[:20]:
         drawer.text((x, 375 + offset), i[2], font=fontNames)
         drawer.text((x + 378, 375 + offset), "{:3d}".format(int(i[1])), font=fontPoints)
@@ -53,10 +53,11 @@ def makeDriverStandImg(standings):
         if i[0] == "10":
             offset = 0
             x = 1000
-
-    img.save('./images/DriverStandings.png')
+    path = './images/DriverStandings.png'
+    img.save(path)
     img.close()
     print('Drivers Standings image saved (DriverStandings.png)')
+    return path
 
 
 
