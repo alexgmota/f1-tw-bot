@@ -25,10 +25,11 @@ def compareQualiPositions(driverId1, driverId2):
     return ((getDriverCode(driverId1), count1), (getDriverCode(driverId2), count2))
 
 def makeQualyComparationMsg():
-    res = "Comparación de compañeros en clasificación: \n\n"
+    res = "🥇 Qualifying Teammates Comparison: 🥇\n\n"
     for i in getTeamMates():
         aux = compareQualiPositions(i[0], i[1])
-        res += f"\t{aux[0][0]} {aux[0][1]} - {aux[1][1]} {aux[1][0]}\n"
+        
+        res += f"   {aux[0][0]}  {aux[0][1]:2d}  - {aux[1][1]:2d}  {aux[1][0]}\n"
     print(res)
     return res
 
