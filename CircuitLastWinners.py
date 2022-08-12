@@ -23,10 +23,10 @@ def getNextCircuit():
 
 def makeLastWinnersMsg():
     circuit = getNextCircuit()
-    res = f"Last {circuit['circuitName']} Winners:\n\n"
+    res = f"🏆 Last {circuit['circuitName']} Winners: 🏆\n\n"
     lastWinners = getLastCircuitWinners(circuit['circuitId'])
     for i in lastWinners[::-1]:
-        res += f"\t{i[0]} - {i[1]}\n"
+        res += f"    {i[0]} - {i[1]}\n"
     print(res)
     return res
 
