@@ -13,7 +13,7 @@ def getQualyLapTimes():
     for i in response["MRData"]["RaceTable"]["Races"][0]['QualifyingResults']:
         lapTimes.append((i['Driver']['driverId'], getHigherQualyTime(i)))
     lapTimes.sort(key=comparator)
-    return lapTimes
+    return lapTimes, response["MRData"]["RaceTable"]["Races"][0]['raceName']
 
 
 def getHigherQualyTime(qualyResult):
@@ -41,21 +41,22 @@ def getQ1Time(qualyResult):
     return qualyResult['Q1']
 
 def makeQualyGraph():
-    times = getQualyLapTimes()
+    times, raceName = getQualyLapTimes()
     driversId = list(map(getDrivers, times))
     normalizedTimes = normalizeQualyTimes(list(map(getTimes, times)))
     drivers = getDriversCode(driversId)
     colors = getDriversTeamColor(driversId)
     plt.style.use('./templates/mystyle.mplstyle')
     plt.figure(figsize=[10, 5])
-    plt.title(f'Qualy Results')
+    plt.title(f'Qualy Results\n{raceName}')
     plt.xlabel('Leader gap in %')
     
     plt.barh(drivers[::-1], normalizedTimes[::-1], color=colors[::-1])
-
-    plt.savefig('./images/qualyTimes.png', dpi=300)
+    path = './images/qualyTimes.png'
+    plt.savefig(path, dpi=300)
     plt.close()
     print('Figure qualy saved (qualyTimes.png)')
+    return path
 
 
 def getDrivers(i):
@@ -69,6 +70,11 @@ def normalizeQualyTimes(times):
     for i in times[1:]:
         normalizedTimes.append((i/times[0] - 1) * 100)
     return normalizedTimes
+
+def makeQualyResultsMsg():
+    img = makeQualyGraph()
+    txt = "📈 Qualifying Results 📉\n"
+    return txt, img
 
 if __name__ == '__main__':
     makeQualyGraph()
