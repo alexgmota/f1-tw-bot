@@ -1,9 +1,11 @@
 tempCodeRunnerFile.py
 
-images/
+images/*
 
 __pycache__/
 
 credentials.json
 
 .vscode/
+
+cache/*
