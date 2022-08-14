@@ -2,6 +2,7 @@ import sys
 import requests
 import json 
 from ChampStandings import getConstructorStandings, getDriversStandings, makeConstStandImg, makeDriverStandImg
+from CircuitLastPoles import makeLastPolesMsg
 from CircuitLastWinners import makeLastWinnersMsg
 from QualyComparator import makeQualyComparationMsg
 from QualyResults import makeQualyResultsMsg
@@ -24,6 +25,8 @@ def actions(opc):
             tweetQualyResults()
         case '6':
             tweetRacePace()
+        case '7': 
+            tweetLastPoles()
         case _: 
             print('\tIntroduce una opcion valida')
 
@@ -48,6 +51,9 @@ def getLastRaceName():
 def tweetLastWinners():
     postTextTweet(makeLastWinnersMsg() + "\n\n [Test]")
 
+def tweetLastPoles():
+    postTextTweet(makeLastPolesMsg() + "\n\n [Test]")
+
 def tweetQualyComparator():
     postTextTweet(makeQualyComparationMsg() + "\n\n [Test]")
 
@@ -69,7 +75,8 @@ if __name__ == '__main__':
             '\t\t 3. Tweet Last Winner\n' +
             '\t\t 4. Tweet Qualy Mates Comparation\n' +
             '\t\t 5. Tweet Qualy Results Graph\n' + 
-            '\t\t 6. Tweet Race Pace Graph\n'
+            '\t\t 6. Tweet Race Pace Graph\n' +
+            '\t\t 7. Tweet Last Pole sitters\n'
         )
         opc = input('\t Select an option: ')
         actions(opc)
