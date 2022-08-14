@@ -5,6 +5,7 @@ from ChampStandings import getConstructorStandings, getDriversStandings, makeCon
 from CircuitLastWinners import makeLastWinnersMsg
 from QualyComparator import makeQualyComparationMsg
 from QualyResults import makeQualyResultsMsg
+from RacePace import makeRaceGraph
 
 from Schedule import makeScheduleTweet
 from twitterManager import postImageTweet, postTextTweet
@@ -21,6 +22,8 @@ def actions(opc):
             tweetQualyComparator()
         case '5':
             tweetQualyResults()
+        case '6':
+            tweetRacePace()
         case _: 
             print('\tIntroduce una opcion valida')
 
@@ -52,6 +55,11 @@ def tweetQualyResults():
     txt, img = makeQualyResultsMsg()
     postImageTweet(txt + "\n\n [Test]", [img])
 
+def tweetRacePace():
+    img = makeRaceGraph()
+    txt = f'🏆 Top 5 Race pace 🏆\n\n{getLastRaceName()}'
+    postImageTweet(txt + "\n\n [Test]", [img])
+
 if __name__ == '__main__':
     if len(sys.argv) == 1:
         print(
@@ -60,7 +68,8 @@ if __name__ == '__main__':
             '\t\t 2. Tweet standings\n' +
             '\t\t 3. Tweet Last Winner\n' +
             '\t\t 4. Tweet Qualy Mates Comparation\n' +
-            '\t\t 5. Tweet Qualy Results Graph\n'
+            '\t\t 5. Tweet Qualy Results Graph\n' + 
+            '\t\t 6. Tweet Race Pace Graph\n'
         )
         opc = input('\t Select an option: ')
         actions(opc)
