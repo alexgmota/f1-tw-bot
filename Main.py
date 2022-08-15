@@ -19,25 +19,21 @@ from twitterManager import postImageTweet, postTextTweet
 
 
 def actions(opc):
-    match opc:
-        case "1":
-            tweetSchedule()
-        case "2":
-            tweetStandings()
-        case "3":
-            tweetLastWinners()
-        case "4":
-            tweetQualyComparator()
-        case "5":
-            tweetQualyResults()
-        case "6":
-            tweetRacePace()
-        case "7":
-            tweetLastPoles()
-        case "8":
-            tweetRaceResults()
-        case _:
-            print("\tIntroduce una opcion valida")
+    sw = {
+        '1': tweetSchedule,
+        '2': tweetStandings,
+        '3': tweetLastWinners,
+        '4': tweetQualyComparator,
+        '5': tweetQualyResults,
+        '6': tweetRacePace,
+        '7': tweetLastPoles,
+        '8': tweetRaceResults,
+    }
+    action = sw.get(opc)
+    try:
+        action()
+    except:
+        print('\tIntroduce una opción valida')
 
 
 def tweetSchedule():
@@ -94,7 +90,7 @@ if __name__ == "__main__":
             "\t Options:\n\n"
             + "\t\t 1. Tweet schedule\n"
             + "\t\t 2. Tweet standings\n"
-            + "\t\t 3. Tweet Last Winner\n"
+            + "\t\t 3. Tweet Last Winners\n"
             + "\t\t 4. Tweet Qualy Mates Comparation\n"
             + "\t\t 5. Tweet Qualy Results Graph\n"
             + "\t\t 6. Tweet Race Pace Graph\n"

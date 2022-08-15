@@ -49,7 +49,3 @@ def postImageTweet(msg, images):
     print("Message sent")
     print("Message content:\n" + msg)
     print(images)
-
-if __name__ == "__main__":
-    postTextTweet("Test 2")
-    postImageTweet("Test image 2", ['./images/lap_times_normalized.png'])
