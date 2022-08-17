@@ -1,7 +1,7 @@
 import requests
 import json
 
-from DriverInfo import getDriverCode
+from DriverInfo import getDriverCode, getTeamMates
 
 def getQualyPositions(driverId):
     res = requests.get(f'https://ergast.com/api/f1/current/drivers/{driverId}/qualifying.json')
@@ -33,19 +33,6 @@ def makeQualyComparationMsg():
     print(res)
     return res
 
-def getTeamMates():
-    return [
-        ('leclerc', 'sainz'),
-        ('max_verstappen', 'perez'),
-        ('hamilton', 'russell'),
-        ('alonso', 'ocon'),
-        ('norris', 'ricciardo'),
-        ('bottas', 'zhou'),
-        ('gasly', 'tsunoda'),
-        ('mick_schumacher', 'kevin_magnussen'),
-        ('vettel', 'stroll'),
-        ('albon', 'latifi')
-    ]
 
 if __name__ == '__main__':
     makeQualyComparationMsg()

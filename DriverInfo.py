@@ -29,3 +29,17 @@ def getDriverColor(driverId):
 def getDriverFamilyName(driverId):
     data = getData()
     return data[driverId]['familyName']
+
+def getTeamMates():
+    return [
+        ('leclerc', 'sainz'),
+        ('max_verstappen', 'perez'),
+        ('hamilton', 'russell'),
+        ('alonso', 'ocon'),
+        ('norris', 'ricciardo'),
+        ('bottas', 'zhou'),
+        ('gasly', 'tsunoda'),
+        ('mick_schumacher', 'kevin_magnussen'),
+        ('vettel', 'stroll'),
+        ('albon', 'latifi')
+    ]
