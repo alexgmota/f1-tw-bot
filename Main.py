@@ -11,6 +11,7 @@ from CircuitLastPoles import makeLastPolesMsg
 from CircuitLastWinners import makeLastWinnersMsg
 from QualyComparator import makeQualyComparationMsg
 from QualyResults import makeQualyResultsMsg
+from RaceComparator import makeRaceComparationMsg
 from RacePace import makeRaceGraph
 from RaceResults import makeRaceResultsMsg
 
@@ -20,20 +21,21 @@ from twitterManager import postImageTweet, postTextTweet
 
 def actions(opc):
     sw = {
-        '1': tweetSchedule,
-        '2': tweetStandings,
-        '3': tweetLastWinners,
-        '4': tweetQualyComparator,
-        '5': tweetQualyResults,
-        '6': tweetRacePace,
-        '7': tweetLastPoles,
-        '8': tweetRaceResults,
+        "1": tweetSchedule,
+        "2": tweetStandings,
+        "3": tweetLastWinners,
+        "4": tweetQualyComparator,
+        "5": tweetQualyResults,
+        "6": tweetRacePace,
+        "7": tweetLastPoles,
+        "8": tweetRaceResults,
+        "9": tweetRaceComparator,
     }
     action = sw.get(opc)
     try:
         action()
     except:
-        print('\tIntroduce una opción valida')
+        print("\tIntroduce una opción valida")
 
 
 def tweetSchedule():
@@ -84,6 +86,10 @@ def tweetRaceResults():
     postImageTweet(txt + "\n\n [Test]", img)
 
 
+def tweetRaceComparator():
+    postTextTweet(makeRaceComparationMsg())
+
+
 if __name__ == "__main__":
     if len(sys.argv) == 1:
         print(
@@ -96,6 +102,7 @@ if __name__ == "__main__":
             + "\t\t 6. Tweet Race Pace Graph\n"
             + "\t\t 7. Tweet Last Pole sitters\n"
             + "\t\t 8. Tweet Race Results\n"
+            + "\t\t 9. Tweet Race Comparator\n"
         )
         opc = input("\t Select an option: ")
         actions(opc)
