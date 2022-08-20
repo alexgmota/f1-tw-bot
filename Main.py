@@ -16,6 +16,7 @@ from RacePace import makeRaceGraph
 from RaceResults import makeRaceResultsMsg
 
 from Schedule import makeScheduleTweet
+from TelemetryAnalizer import makeTelemetryMsg
 from twitterManager import postImageTweet, postTextTweet
 
 
@@ -30,12 +31,13 @@ def actions(opc):
         "7": tweetLastPoles,
         "8": tweetRaceResults,
         "9": tweetRaceComparator,
+        "10": tweetTelemetryComparison,
     }
     action = sw.get(opc)
     try:
         action()
     except:
-        print("\tIntroduce una opción valida")
+        print("\tSe ha producido un error")
 
 
 def tweetSchedule():
@@ -90,19 +92,25 @@ def tweetRaceComparator():
     postTextTweet(makeRaceComparationMsg())
 
 
+def tweetTelemetryComparison():
+    txt, img = makeTelemetryMsg()
+    postImageTweet(txt, img)
+
+
 if __name__ == "__main__":
     if len(sys.argv) == 1:
         print(
             "\t Options:\n\n"
-            + "\t\t 1. Tweet schedule\n"
-            + "\t\t 2. Tweet standings\n"
-            + "\t\t 3. Tweet Last Winners\n"
-            + "\t\t 4. Tweet Qualy Mates Comparation\n"
-            + "\t\t 5. Tweet Qualy Results Graph\n"
-            + "\t\t 6. Tweet Race Pace Graph\n"
-            + "\t\t 7. Tweet Last Pole sitters\n"
-            + "\t\t 8. Tweet Race Results\n"
-            + "\t\t 9. Tweet Race Comparator\n"
+            + "\t\t  1. Tweet schedule\n"
+            + "\t\t  2. Tweet standings\n"
+            + "\t\t  3. Tweet Last Winners\n"
+            + "\t\t  4. Tweet Qualy Mates Comparation\n"
+            + "\t\t  5. Tweet Qualy Results Graph\n"
+            + "\t\t  6. Tweet Race Pace Graph\n"
+            + "\t\t  7. Tweet Last Pole sitters\n"
+            + "\t\t  8. Tweet Race Results\n"
+            + "\t\t  9. Tweet Race Comparator\n"
+            + "\t\t 10. Tweet Telemetry Comparison\n"
         )
         opc = input("\t Select an option: ")
         actions(opc)
