@@ -114,3 +114,5 @@ if __name__ == "__main__":
         )
         opc = input("\t Select an option: ")
         actions(opc)
+    else:
+        actions(sys.argv[1])
