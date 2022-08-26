@@ -1,5 +1,6 @@
 from twitter import *
 import json
+import os
 
 def getConnection():
     credentials = getCredentials()
@@ -27,8 +28,16 @@ def getUploadConnection():
     )
 
 def getCredentials():
-    with open("credentials.json") as file:
-        return json.load(file)
+    try: 
+        return {
+            "acces_token": os.environ['ACCES_TOKEN'],
+            "acces_token_secret": os.environ['ACCES_TOKEN_SECRET'],
+            "key": os.environ['KEY'],
+            "key_secret": os.environ['KEY_SECRET']
+        } 
+    except:
+        with open("credentials.json") as file:
+            return json.load(file)
 
 def postTextTweet(msg):
     t = getConnection()
