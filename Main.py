@@ -42,7 +42,7 @@ def actions(opc):
 
 def tweetSchedule():
     txt, img = makeScheduleTweet()
-    postImageTweet(txt + "\n\n [Test]", [img])
+    postImageTweet(txt, [img])
 
 
 def tweetStandings():
@@ -51,7 +51,7 @@ def tweetStandings():
         makeConstStandImg(getConstructorStandings()),
     ]
     txt = f"🏆 Standings after {getLastRaceName()} 🏆"
-    postImageTweet(txt + "\n\n [Test]", img)
+    postImageTweet(txt, img)
 
 
 def getLastRaceName():
@@ -61,31 +61,31 @@ def getLastRaceName():
 
 
 def tweetLastWinners():
-    postTextTweet(makeLastWinnersMsg() + "\n\n [Test]")
+    postTextTweet(makeLastWinnersMsg())
 
 
 def tweetLastPoles():
-    postTextTweet(makeLastPolesMsg() + "\n\n [Test]")
+    postTextTweet(makeLastPolesMsg())
 
 
 def tweetQualyComparator():
-    postTextTweet(makeQualyComparationMsg() + "\n\n [Test]")
+    postTextTweet(makeQualyComparationMsg())
 
 
 def tweetQualyResults():
     txt, img = makeQualyResultsMsg()
-    postImageTweet(txt + "\n\n [Test]", [img])
+    postImageTweet(txt, [img])
 
 
 def tweetRacePace():
     img = makeRaceGraph()
     txt = f"🏆 Top 5 Race pace 🏆\n\n{getLastRaceName()}"
-    postImageTweet(txt + "\n\n [Test]", [img])
+    postImageTweet(txt, [img])
 
 
 def tweetRaceResults():
     txt, img = makeRaceResultsMsg()
-    postImageTweet(txt + "\n\n [Test]", img)
+    postImageTweet(txt, img)
 
 
 def tweetRaceComparator():
