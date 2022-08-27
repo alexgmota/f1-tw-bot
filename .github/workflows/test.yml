@@ -22,6 +22,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           
+      - name: make cache dir
+        run: mkdir cache
+          
       - name: execute py script # run main.py
         env:
           KEY: ${{ secrets.KEY }}
