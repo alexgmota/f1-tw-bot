@@ -2,7 +2,7 @@ name: run qualy results
 
 on:
   schedule:
-    - cron: '30 18 * * 6' # At 6 pm on Saturday
+    - cron: '30 19 * * 7' # At 7.30 pm on Sunday
 
 jobs:
   build:
