@@ -30,8 +30,8 @@ def getUploadConnection():
 def getCredentials():
     try: 
         return {
-            "acces_token": os.environ['ACCES_TOKEN'],
-            "acces_token_secret": os.environ['ACCES_TOKEN_SECRET'],
+            "acces_token": os.environ['ACCESS_TOKEN'],
+            "acces_token_secret": os.environ['ACCESS_TOKEN_SECRET'],
             "key": os.environ['KEY'],
             "key_secret": os.environ['KEY_SECRET']
         } 
