@@ -2,7 +2,7 @@ name: run qualy results
 
 on:
   schedule:
-    - cron: '43 00 * * 0' # At 7.30 pm on Sunday
+    - cron: '48 00 * * 0' # At 7.30 pm on Sunday
 
 jobs:
   build:
@@ -28,4 +28,4 @@ jobs:
           KEY_SECRET: ${{ secrets.KEY_SECRET }}
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
-        run: python main.py 5
+        run: python Main.py 5
