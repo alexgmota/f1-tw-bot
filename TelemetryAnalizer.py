@@ -7,14 +7,12 @@ from fastf1 import plotting
 
 from matplotlib import pyplot as plt
 
-from RacePace import getLastRace
-
 
 def makeTelemtryGraph():
     # Enable the cache by providing the name of the cache folder
     ff1.Cache.enable_cache("cache")
 
-    season, race, _ = getLastRace()
+    season, race, _ = getNextRace()
 
     qualy = ff1.get_session(season, race, "Q")
     qualy.load()
@@ -97,6 +95,15 @@ def makeTelemtryGraph():
     return path
 
 
+def getNextRace():
+    res = requests.get(f"https://ergast.com/api/f1/current/next.json")
+    response = json.loads(res.text)
+    season = response["MRData"]["RaceTable"]["season"]
+    race = response["MRData"]["RaceTable"]["round"]
+    raceName = response["MRData"]["RaceTable"]["Races"][0]["raceName"]
+    return int(season), int(race), raceName
+
+
 def getBestDrivers(qualy):
     res = requests.get(
         f"https://ergast.com/api/f1/{qualy.event.EventDate.year}/{qualy.event.RoundNumber}/qualifying/1.json"
@@ -112,7 +119,7 @@ def getBestDrivers(qualy):
 
 
 def makeTelemetryMsg():
-    txt = "📈 Telemetry Comparison 📉"
+    txt = "📈 Telemetry Comparison 📉\nComparing fastest lap vs second fastest"
     img = makeTelemtryGraph()
     return txt, [img]
 
