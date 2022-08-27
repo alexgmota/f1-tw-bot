@@ -1,8 +1,8 @@
 name: run qualy telemetry test
 
 on:
-  schedule:
-    - cron: '*/2 * * * *' # At 8.45 pm on Saturday
+  push:
+     branches: [ "main" ]
 
 jobs:
   build:
