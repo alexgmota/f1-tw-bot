@@ -7,7 +7,7 @@ from DriverInfo import getDriversCode, getDriversTeamColor
 from DriverLapsComparator import strToSec
 
 def getQualyLapTimes():
-    res = requests.get('https://ergast.com/api/f1/current/last/qualifying.json')
+    res = requests.get('https://ergast.com/api/f1/current/next/qualifying.json')
     response = json.loads(res.text)
     lapTimes = []
     for i in response["MRData"]["RaceTable"]["Races"][0]['QualifyingResults']:
