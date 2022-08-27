@@ -24,6 +24,9 @@ jobs:
           
       - name: make cache dir
         run: mkdir cache
+        
+      - name: make images dir
+        run: mkdir images
           
       - name: execute py script # run main.py
         env:
