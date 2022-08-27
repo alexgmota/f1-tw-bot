@@ -2,7 +2,7 @@ name: run qualy telemetry
 
 on:
   schedule:
-    - cron: '15 0 * * 0' # At 8.30 pm on Sunday
+    - cron: '45 20 * * 6' # At 8.45 pm on Saturday
 
 jobs:
   build:
