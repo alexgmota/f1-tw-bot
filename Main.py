@@ -1,3 +1,4 @@
+from datetime import datetime
 import sys
 import requests
 import json
@@ -15,7 +16,7 @@ from RaceComparator import makeRaceComparationMsg
 from RacePace import makeRaceGraph
 from RaceResults import makeRaceResultsMsg
 
-from Schedule import makeScheduleTweet
+from Schedule import getRaceDate, getRaceSchedule, makeScheduleTweet
 from TelemetryAnalizer import makeTelemetryMsg
 from twitterManager import postImageTweet, postTextTweet
 
@@ -98,6 +99,10 @@ def tweetTelemetryComparison():
     postImageTweet(txt, img)
 
 
+def isRaceWeek():
+    return getRaceDate(getRaceSchedule()).strftime("%W") == datetime.now().strftime("%W")
+
+
 if __name__ == "__main__":
     if len(sys.argv) == 1:
         print(
@@ -116,4 +121,6 @@ if __name__ == "__main__":
         opc = input("\t Select an option: ")
         actions(opc)
     else:
-        actions(sys.argv[1])
+        if isRaceWeek():
+            for i in sys.argv[1:]:
+                actions(sys.argv[1])
