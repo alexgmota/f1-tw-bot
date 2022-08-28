@@ -36,8 +36,9 @@ def actions(opc):
     action = sw.get(opc)
     try:
         action()
-    except:
+    except Exception as e:
         print("\tSe ha producido un error")
+        print(e)
 
 
 def tweetSchedule():
