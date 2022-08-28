@@ -1,4 +1,4 @@
-name: run saturday actions
+name: run Saturday actions
 
 on:
   schedule:
