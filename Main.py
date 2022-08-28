@@ -123,4 +123,4 @@ if __name__ == "__main__":
     else:
         if isRaceWeek():
             for i in sys.argv[1:]:
-                actions(sys.argv[1])
+                actions(i)
