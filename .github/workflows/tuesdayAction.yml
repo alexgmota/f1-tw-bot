@@ -1,7 +1,7 @@
-name: run Monday actions
+name: run Sunday actions
 on:
   schedule:
-    - cron: '30 15 * * 1' # At 15.30 pm UTC on Monday (España +2)
+    - cron: '30 15 * * 2' # At 3.30 pm UTC on Tuesday (España +2)
 
 jobs:
   build:
@@ -32,4 +32,4 @@ jobs:
           KEY_SECRET: ${{ secrets.KEY_SECRET }}
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
-        run: python Main.py 1 2
+        run: python Main.py 4
