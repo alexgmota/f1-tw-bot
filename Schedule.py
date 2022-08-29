@@ -46,8 +46,8 @@ def makeScheduleImg(data):
     fontSemiBoldSmall = ImageFont.truetype('./fonts/Roboto_Slab/static/RobotoSlab-SemiBold.ttf', 45)
 
     #Title
-    drawer.text((110, 120), data['raceName'], font=fontBold)
-    drawer.text((110, 200), data["Circuit"]["circuitName"], font=fontMediumBig)
+    drawer.text((540, 170), data['raceName'], font=fontBold, anchor="mm")
+    drawer.text((540, 250), data["Circuit"]["circuitName"], font=fontMediumBig, anchor="mm")
 
     # FP
     drawer.text((90, 400), 'Free Practice 1', font=fontSemiBoldSmall)
@@ -56,16 +56,16 @@ def makeScheduleImg(data):
     drawer.text((645, 400), 'Free Practice 2', font=fontSemiBoldSmall)
     drawer.text((645, 468), getFP2Date(data).strftime('%a %d - %H:%M'), font=fontMediumSmall)
 
-    drawer.text((90, 605), 'Free Practice 3', font=fontSemiBoldSmall)
-    drawer.text((90, 675), getFP3Date(data).strftime('%a %d - %H:%M'), font=fontMediumSmall)
+    drawer.text((90, 603), 'Free Practice 3', font=fontSemiBoldSmall)
+    drawer.text((90, 673), getFP3Date(data).strftime('%a %d - %H:%M'), font=fontMediumSmall)
 
     # Qualy
-    drawer.text((645, 605), 'Qualifying', font=fontSemiBoldSmall)
-    drawer.text((645, 675), getQualiDate(data).strftime('%a %d - %H:%M'), font=fontMediumSmall)
+    drawer.text((645, 600), 'Qualifying', font=fontSemiBoldSmall)
+    drawer.text((645, 670), getQualiDate(data).strftime('%a %d - %H:%M'), font=fontMediumSmall)
 
     # Race
-    drawer.text((470, 780), 'Race', font=fontSemiBoldBig)
-    drawer.text((420, 860), getRaceDate(data).strftime('%a %d - %H:%M'), font=fontMediumSmall)
+    drawer.text((540, 820), 'Race', font=fontSemiBoldBig, anchor="mm")
+    drawer.text((540, 890), getRaceDate(data).strftime('%a %d - %H:%M'), font=fontMediumSmall, anchor="mm")
 
     img.save('./images/schedule.png')
     print("Schedule image saved (schedule.png)")
