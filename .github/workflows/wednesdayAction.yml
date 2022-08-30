@@ -1,0 +1,35 @@
+name: run Monday actions
+on:
+  schedule:
+    - cron: '30 15 * * 1' # At 15.30 pm UTC on Monday (España +2)
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: checkout repo content
+        uses: actions/checkout@v2 # checkout the repository content to github runner
+
+      - name: setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' # install the python version needed
+          
+      - name: install python packages
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: create directories
+        run: |
+          mkdir images
+          mkdir cache
+          
+      - name: execute py script # run main.py
+        env:
+          KEY: ${{ secrets.KEY }}
+          KEY_SECRET: ${{ secrets.KEY_SECRET }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
+        run: python Main.py 9
