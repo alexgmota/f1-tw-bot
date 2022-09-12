@@ -33,4 +33,4 @@ jobs:
           KEY_SECRET: ${{ secrets.KEY_SECRET }}
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
-        run: python Main.py 5 10
+        run: python Main.py 10 5
