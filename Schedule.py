@@ -24,6 +24,11 @@ class Schedule:
         response = requests.get(f"https://ergast.com/api/f1/current/next.json").json()
         return response["MRData"]["RaceTable"]["Races"][0]
 
+    def getLastRaceSchedule(self):
+        res = requests.get(f'https://ergast.com/api/f1/current/last.json').json()
+        self.data =  res["MRData"]["RaceTable"]["Races"][0]
+        return self
+
     def parseDates(self, date, time):
         dateArray = date.split("-")
         timeArray = time[0:-1].split(":")
