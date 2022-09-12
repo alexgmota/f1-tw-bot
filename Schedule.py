@@ -10,6 +10,11 @@ def getRaceSchedule():
     response = json.loads(res.text)
     return response["MRData"]["RaceTable"]["Races"][0]
 
+def getLastRaceSchedule():
+    res = requests.get(f'https://ergast.com/api/f1/current/last.json')
+    response = json.loads(res.text)
+    return response["MRData"]["RaceTable"]["Races"][0]
+
 def parseDates(date, time):
     dateArray = date.split("-")
     timeArray = time[0:-1].split(":")
