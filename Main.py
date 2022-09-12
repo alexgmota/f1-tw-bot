@@ -16,7 +16,7 @@ from RaceComparator import makeRaceComparationMsg
 from RacePace import makeRaceGraph
 from RaceResults import makeRaceResultsMsg
 
-from Schedule import getLastRaceSchedule, getRaceDate, getRaceSchedule, makeScheduleTweet
+from Schedule import Schedule
 from TelemetryAnalizer import makeTelemetryMsg
 from twitterManager import postImageTweet, postTextTweet
 
@@ -43,7 +43,7 @@ def actions(opc):
 
 
 def tweetSchedule():
-    txt, img = makeScheduleTweet()
+    txt, img = Schedule().makeScheduleTweet()
     postImageTweet(txt, [img])
 
 
@@ -100,11 +100,13 @@ def tweetTelemetryComparison():
 
 
 def isRaceWeek():
-    raceDate = getRaceDate(getLastRaceSchedule())
+    sch = Schedule()
+    raceWeek = sch.getRaceDate()
+    raceDate = sch.getLastRaceSchedule().getRaceDate()
     now = datetime.now()
     return (
         raceDate.strftime("%d %m") == now.strftime("%d %m") 
-        or raceDate.strftime("%W") == now.strftime("%W")
+        or raceWeek.strftime("%W") == now.strftime("%W")
     )
 
 
