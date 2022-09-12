@@ -100,11 +100,13 @@ def tweetTelemetryComparison():
 
 
 def isRaceWeek():
-    raceDate = Schedule().getLastRaceSchedule().getRaceDate()
+    sch = Schedule()
+    raceWeek = sch.getRaceDate()
+    raceDate = sch.getLastRaceSchedule().getRaceDate()
     now = datetime.now()
     return (
         raceDate.strftime("%d %m") == now.strftime("%d %m") 
-        or raceDate.strftime("%W") == now.strftime("%W")
+        or raceWeek.strftime("%W") == now.strftime("%W")
     )
 
 
