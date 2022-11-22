@@ -1,7 +1,7 @@
 name: run Monday actions
 on:
   schedule:
-    - cron: '30 15 * * 4' # At 15.30 pm UTC on Thursday (España +2)
+    #- cron: '30 15 * * 4' # At 15.30 pm UTC on Thursday (España +2)
 
 jobs:
   build:
